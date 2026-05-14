@@ -856,10 +856,10 @@ footer {
 }
 
 /* Images factices (à remplacer par vos vraies photos) */
-.img-voyant { background-image: url('images/voyant.avif'); }
-.img-recherche { background-image: url('images/pannes.avif'); }
-.img-tableau { background-image: url('images/voyants.avif'); }
-.img-engine { background-image: url('images/controle.avif'); }
+.img-voyant { background-image: url('images/voyant.png'); }
+.img-recherche { background-image: url('images/pannes.png'); }
+.img-tableau { background-image: url('images/voyants.png'); }
+.img-engine { background-image: url('images/controle.png'); }
 
 .diag-cta {
     text-align: center;
@@ -1053,9 +1053,9 @@ footer {
 }
 
 /* Images spécifiques basées sur vos captures */
-.img-logos-auto { background-image: url('images/cles1.avif'); } /* Capture 5 */
-.img-marques-grid { background-image: url('images/cles2.avif'); } /* Capture 6 */
-.img-taillage { background-image: url('images/cles3.avif'); } /* Capture 7 */
+.img-logos-auto { background-image: url('images/cles1.png'); } /* Capture 5 */
+.img-marques-grid { background-image: url('images/cles2.png'); } /* Capture 6 */
+.img-taillage { background-image: url('images/cles3.png'); } /* Capture 7 */
 
 /* Section Pourquoi nous choisir */
 .cle-pourquoi {
@@ -1127,7 +1127,7 @@ footer {
     max-width: 800px; /* Taille limitée pour ne pas envahir l'écran */
     height: 350px;
     border-radius: 20px;
-    background-image: url('images/dashcam2.avif'); /* Capture 10 */
+    background-image: url('images/dashcam2.png'); /* Capture 10 */
     background-size: cover;
     background-position: center;
     border: 1px solid rgba(255, 255, 255, 0.1);
