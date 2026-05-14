@@ -995,9 +995,12 @@ footer {
 }
 
 /* Images (Option CSS) */
-.img-entretien { background-image: url('images/meca-1.jpg'); }
-.img-freins { background-image: url('images/meca-2.jpg'); }
-/* etc... */
+.img-entretien { background-image: url('images/meca-entretien.png'); }
+.img-freins { background-image: url('images/meca-freins.png'); }
+.img-distribution { background-image: url('images/meca-distribution.png'); }
+.img-diag { background-image: url('images/meca-diag.png'); }
+.img-pneus { background-image: url('images/meca-pneus.png'); }
+.img-batterie { background-image: url('images/meca-batterie.png'); }
 
 /* --- STYLES PAGE CLÉS --- */
 
@@ -1183,82 +1186,150 @@ footer {
     padding-bottom: 100px;
 }
 
+/* --- RESPONSIVE HEADER --- */
 
+/* Cache les éléments mobiles par défaut sur PC */
+.menu-toggle, .mobile-nav-header {
+    display: none;
+}
 
-/* Mobile */
-@media (max-width: 768px) {
-    .diag-card, .card-reverse {
-        flex-direction: column;
-    }
-    .diag-image {
-        height: 200px;
-    }
+.menu-toggle .bar {
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    transition: 0.3s;
+    border-radius: 3px;
 }
 
 
-/* 7. RESPONSIVE */
-@media (max-width: 1100px) {
+/* ============================================================
+   1. GRANDS ÉCRANS / TABLETTES PAYSAGE (Point de rupture : 1024px)
+   ============================================================ */
+@media (max-width: 1024px) {
     .hero { flex-direction: column; }
-    .hero-visual { height: 450px; order: -1; }
+    .hero-visual { height: 400px; order: -1; width: 100%; }
     .hero-content { padding: 40px 5%; text-align: center; align-items: center; }
     .hero-actions { justify-content: center; }
     .stats-bar { justify-content: center; }
-    nav ul { display: none; }
+}
+
+/* ============================================================
+   2. LE MENU BURGER (Point de rupture : 992px)
+   Tout ce qui concerne la navigation mobile se gère ICI UNIQUEMENT.
+   ============================================================ */
+@media (max-width: 992px) {
+    /* Cache le menu horizontal classique */
+    nav ul.nav-list:not(.active ul) { 
+        display: none !important; 
+    }
+
+    /* Affiche le bouton Burger */
+    .menu-toggle {
+        display: flex !important;
+        flex-direction: column;
+        gap: 6px;
+        z-index: 10000;
+        cursor: pointer;
+    }
+
+    /* Le panneau latéral qui s'ouvre */
+    .nav-container nav {
+        display: flex !important;
+        position: fixed;
+        top: 0;
+        right: -100%; /* Caché par défaut */
+        width: 100%;
+        height: 100vh;
+        background: radial-gradient(circle at top right, #1a1f2c, #0a0e17);
+        z-index: 9999;
+        transition: all 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 20px;
+    }
+
+    .nav-container nav.active {
+        right: 0 !important;
+    }
+
+    /* Logo interne au menu */
+    .mobile-nav-header {
+        display: flex !important;
+        width: 100%;
+        padding: 20px 0 40px 0;
+        justify-content: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        margin-bottom: 30px;
+        background: rgba(255, 255, 255, 0.02);
+    }
+
+    .nav-list {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 80%;
+        padding: 0;
+        gap: 10px;
+    }
+
+    .nav-list li {
+        list-style: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-list li a {
+        display: block;
+        padding: 15px 0;
+        color: #ffffff !important;
+        font-size: 1.2rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    /* Animation du burger en X */
+    .menu-toggle.is-active .bar:nth-child(2) { opacity: 0; }
+    .menu-toggle.is-active .bar:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+    .menu-toggle.is-active .bar:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+}
+
+/* ============================================================
+   3. ADAPTATION DES GRILLES (Point de rupture : 900px)
+   ============================================================ */
+@media (max-width: 900px) {
+    .services-grid-page, 
+    .alcolock-grid, 
+    .pro-grid { 
+        flex-direction: column; 
+        align-items: center;
+    }
+    .service-item { margin-bottom: 40px; }
+}
+
+/* ============================================================
+   4. SMARTPHONES & PETITES TABLETTES (Point de rupture : 768px - 850px)
+   ============================================================ */
+@media (max-width: 850px) {
+    .contact-grid, 
+    .cle-grid, 
+    .grid-reverse,
+    .dash-details-grid { 
+        flex-direction: column; 
+        align-items: center; 
+    }
+    .contact-card { width: 100%; }
+    .check-list-pro { grid-template-columns: 1fr; }
+    .diag-card, .card-reverse { flex-direction: column; }
+    .diag-image { height: 200px; width: 100%; }
+    .dash-hero-img { height: 250px; }
 }
 
 @media (max-width: 768px) {
-    .hero-actions {
-        flex-direction: column; /* Aligne les boutons verticalement */
-        align-items: center;    /* Les centre */
-    }
-    
-    .btn {
-        width: 100%;           /* Les boutons prennent toute la largeur disponible */
-        max-width: 300px;      /* Mais ne deviennent pas trop immenses */
-    }
+    .hero-actions { flex-direction: column; align-items: center; }
+    .btn { width: 100%; max-width: 300px; }
 }
 
-@media (max-width: 900px) {
-    .services-grid-page {
-        flex-direction: column;
-        align-items: center;
-    }
-    .service-item {
-        margin-bottom: 60px;
-    }
-}
-
-/* Responsive */
-@media (max-width: 850px) {
-    .contact-grid {
-        flex-direction: column;
-        align-items: center;
-    }
-    .contact-card {
-        width: 100%;
-    }
-}
-
-/* Mobile */
 @media (max-width: 600px) {
     .devis-hero h1 { font-size: 2.5rem; }
     .contact-boxes-wrapper { flex-direction: column; }
-}
-
-@media (max-width: 900px) {
-    .alcolock-grid { flex-direction: column; }
-}
-
-@media (max-width: 900px) {
-    .pro-grid { flex-direction: column; }
-}
-
-@media (max-width: 850px) {
-    .cle-grid, .grid-reverse { flex-direction: column; }
-    .check-list-pro { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 850px) {
-    .dash-details-grid { grid-template-columns: 1fr; }
-    .dash-hero-img { height: 250px; }
 }

@@ -17,8 +17,22 @@
                     <div class="brand-sub">Braine-le-comte</div>
                 </div>
             </div>
+            <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
             <nav>
-                <ul>
+                <div class="mobile-nav-header">
+                    <div class="brand">
+                        <div class="logo-box">+</div>
+                        <div class="brand-text">
+                            <div class="brand-name">Auto Services</div>
+                            <div class="brand-sub">Braine-le-comte</div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="nav-list">
                     <li><a href="index.html">Garage AGT</a></li>
                     <li><a href="services.html" class="active">SERVICES</a></li>
                     <li><a href="alcolock.html">ALCOLOCK</a></li>
@@ -34,6 +48,21 @@
         <p>&copy; 2026 Garage AGT Auto Services - Braine-le-Comte</p>
     </footer>
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const btn = document.getElementById('mobile-menu');
+    const nav = document.querySelector('.nav-container nav');
 
+    if (btn && nav) {
+        btn.addEventListener('click', function() {
+            console.log("Bouton cliqué !"); // Si ça s'affiche en console, le JS est bon
+            nav.classList.toggle('active');
+            btn.classList.toggle('is-active');
+        });
+    } else {
+        console.log("Erreur : Bouton ou Nav introuvable dans le HTML");
+    }
+});
+</script>
 </body>
 </html>
